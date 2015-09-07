@@ -1,7 +1,7 @@
 class Board
 
   def initialize
-    @dimensions  = [1, 1]
+    @dimensions  = [[""] * 10] * 10
   end
 
   def dimensions
