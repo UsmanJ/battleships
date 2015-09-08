@@ -8,10 +8,11 @@ attr_reader :cord
   end
 
   def place_ship(cord1, cord2)
-    # if @cord.include?(cord1, cord2)
-    #   fail 'Already hit this location'
-    # else
-      @cord.push(cord1, cord2).flatten
-    # end
+    #if @cord.find { |x| x }
+    if @cord & [cord1, cord2] != []
+      fail 'Ship already in this location'
+    else
+      @cord.push(cord1, cord2).flatten!
+    end
   end
 end
