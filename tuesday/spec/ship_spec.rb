@@ -10,4 +10,9 @@ describe Ship do
     ship = Ship.new(4)
     expect(ship.size).to be_a(Fixnum)
   end
+
+  # it 'must add patrol to ship array' do
+  #   subject.patrol('A1', 'A2')
+  #   expect(subject.ship).to include('A1')
+  # end
 end

@@ -36,15 +36,13 @@ describe Player do
     expect{subject.fire('A1')}.to raise_error 'Already hit this location'
   end
 
-  it 'should report then all ships are sunk' do
+  it 'should give message if all ships have sunk' do
     subject.place_ship('A1')
-    subject.fire('A1')
-    expect(subject.ship).to be_empty
+    expect(subject.fire('A1')).to eq 'Hit! All ships have sunk'
   end
 
-  it 'should give error if ship array is empty' do
+  it 'should not let ship come onto another ship' do
     subject.place_ship('A1')
-    subject.fire('A1')
-    expect(subject.ship).to be_empty, 'All ships have sunk'
+    expect{subject.place_ship('A1')}.to raise_error 'Ship already in this location'
   end
 end
