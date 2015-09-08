@@ -2,8 +2,11 @@ require 'player'
 
 describe Player do
 
+let(:patrol) {double :patrol}
+
   it 'should place a ship' do
-    subject.place_ship(1)
+    :patrol
+    subject.place_ship(:patrol)
     expect(subject.ship.count).to eq(1)
   end
 

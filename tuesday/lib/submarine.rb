@@ -1,3 +1,4 @@
+require "submarine"
 class Submarine
 
 attr_reader :s_cord
