@@ -9,7 +9,7 @@ class Player
   end
 
   def place_ship(ship)
-    if @hip & ship.cord != []
+    if @ship & ship.cord != []
       fail 'Ship already in this location'
     elsif
       @ship.push(ship.cord).flatten!
