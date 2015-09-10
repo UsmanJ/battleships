@@ -1,7 +1,7 @@
 require_relative 'ship'
 
 class Player
-  COORDINATES = [:A1, :B1, :A2, :B2]
+  COORDINATES = [:A1, :B1, :A2, :B2, :A3]
 
   attr_reader :board, :hits, :misses
 
@@ -14,7 +14,7 @@ class Player
   def place(ship)
     fail "Ship already in this location!" if ship_already_in_location?(ship.coordinates)
     fail "Wrong coordinates" if wrong_coordinates?(ship.coordinates)
-    board << ship.coordinates
+    placing_ship(ship)
   end
 
 
@@ -25,6 +25,39 @@ class Player
     return "You've missed a ship!" if missed(coordinates)
   end
 
+  def placing_ship(ship)
+    if ship.direction == :East
+      placing_ship_east(ship)
+    elsif ship.direction == :North
+      true
+    elsif ship.direction == :South
+      place_ship_south(ship)
+    else
+      true
+    end
+  end
+
+
+  def place_ship_south(ship)
+    board << ship.coordinates
+    (ship.size - 1).times do
+      board << ship.coordinates.next
+    end
+  end
+
+  # def placing_ship_east(ship)
+  #   if ship.direction == :East
+  #
+  #     east = ship.coordinates.to_s.chars.map.with_index do |element, index |
+  #       if index == 0
+  #         element.next
+  #       else
+  #         element
+  #       end
+  #     end
+  #     placing_ship(east.to_sym)
+  #   end
+  # end
 
   private
 
